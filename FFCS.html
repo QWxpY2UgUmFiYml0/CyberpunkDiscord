@@ -1,0 +1,139 @@
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Cyberdeck</title>
+
+<!-- Might as well have some nice styling -->
+<style>
+
+body
+{
+    background-image: url("https://thumbs.gfycat.com/ExcitableGlossyLcont-size_restricted.gif");
+    height: 100%;
+    background-position: bottom-center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+table.data
+{
+    border: #66ff33;
+    border-collapse: collapse;
+    position:absolute;
+    left: 50%;
+    margin-left: -500px;
+    top: 50px;
+}
+
+table.data td
+{
+
+    border: 1.5px solid #00ffff;
+    height: 50px;
+    width: 50px;
+    text-align:center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: rgba(0,0,0, 0.75);
+}
+h1
+{
+    font-family: Lucidia monospace;
+    font-style: italic, bold;
+    color: #00ffff;
+}
+
+</style>
+<h1>Cyberdeck</h1>
+<script language="javascript">
+
+//Used for cell id assignment
+var alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
+
+// Here's a function that formats data
+// passed to it in the above format
+// as a table. The HTML is returned
+// as a string.
+function createTable() {
+    var html = '';
+    
+    // Assume data is an array of arrays,
+    // containing strings.
+
+    html += '<table class="data">';
+    
+    // Step through the rows of the data.
+    for(var x = 0; x<16; x++) {
+        //var rowData = data[row];
+        html+= '<tr>'
+        
+        // Step through the columns in
+        // this row.
+        for(var i =0; i<16; i++) {
+            html += '<td class="cell" id="'+alpha[x]+i+'">';
+                //here is where we will add the code to import the Cyberdeck Programs
+                if(i%5 == 0){
+                    html += '<img id="'+alpha[x]+i+'Content" src="token.png" draggable="true" ondragstart="drag(event)">';
+                }
+                else if(i%3 == 0){
+                    html += '<img id="'+alpha[x]+i+'Content" src="dataWall.png">';
+                }
+            html += '</td>';
+        }
+        
+        html += '</tr>';
+    }
+    
+    html += '</table>';
+    
+    return html;
+}
+
+// This function takes the formatted HTML
+// and inserts it into the document as
+// 'child' HTML of the specified element.
+function insertHTML(id, html) {
+    var el = document.getElementById(id);
+    
+    if(!el) {
+        alert('Element with id ' + id + ' not found.');
+    }
+    
+    el.innerHTML = html;
+}
+
+// This function ties things up.
+function run() {
+    var html = createTable();
+    
+    insertHTML('tabledata', html);
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+
+// Run everything when the document loads.
+window.onload = run;
+
+</script>
+
+</head>
+
+<body>
+
+<div id="tabledata" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+</body>
+
+</html>
