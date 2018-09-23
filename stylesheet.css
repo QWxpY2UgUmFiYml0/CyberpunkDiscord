@@ -1,0 +1,35 @@
+body
+{
+    background-image: url("https://thumbs.gfycat.com/ExcitableGlossyLcont-size_restricted.gif");
+    height: 100%;
+    background-position: bottom-center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+table.data
+{
+    border: #66ff33;
+    border-collapse: collapse;
+    position:absolute;
+    left: 50%;
+    margin-left: -500px;
+    top: 50px;
+}
+
+table.data td
+{
+
+    border: 1.5px solid #00ffff;
+    height: 50px;
+    width: 50px;
+    text-align:center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: rgba(0,0,0, 0.75);
+}
+h1
+{
+    font-family: Lucidia monospace;
+    font-style: italic, bold;
+    color: #00ffff;
+}
