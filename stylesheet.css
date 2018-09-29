@@ -11,19 +11,33 @@ table.data {
     border-collapse: collapse;
     position: absolute;
     left: 50%;
-    margin-left: -500px;
-    top: 50px;
+    margin-left: -400px;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    overflow: scroll;
 }
 
-table.data td {
-
+table.data td.cell {
     border: 1.5px solid #00ffff;
-    height: 50px;
-    width: 50px;
+    height: 45px;
+    width: 45px;
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.75);
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.data img{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: -5px;
 }
 
 h1 {
