@@ -9,7 +9,7 @@ const { files } = require('./modules/files.js')
 
 //imports the roll function from the diceRoll module
 //@params (min, max)
-const { roll } = require(files.diceRoll)
+const { roll } = require(files.diceRoll())
 
 //Also need to increase the INT of the system by 3 for each CPU
 //Gain 4 spaces of memory for each CPU, one Code Gate, and one Terminal

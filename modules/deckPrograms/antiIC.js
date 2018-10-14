@@ -1,4 +1,4 @@
-const antiIC = (function(){
+const antiIC = (function () {
     const _antiIC = ["Killer", "Killer", "Manticore", "Manticore",
     "Aardvark", "Aardvark"];
 

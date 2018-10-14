@@ -1,18 +1,23 @@
-const { privates } = require('./privates.js')
-const defenses = (function(){
-    const _defenses = [privates.detectionAlarm, privates.detectionAlarm,
-        privates.detectionAlarm, privates.detectionAlarm, privates.antiIC,
-        privates.antiIC, privates.antiSystem, privates.antiSystem, 
-        privates.antiPersonnel, privates.antiPersonnel]
+const files = require('./files.js')
+const { roll } = require(files.getDiceRoll())
+const { detectionAlarm } = require(files.getDetectionAlarm())
+const { antiIC } = require(files.getAntiIC())
+const { antiSystem } = require(files.getAntiSystem())
+const { antiPersonnel } = require(files.getAntiPersonnel())
+var cpuCount = roll(1, 6)
 
+const defenses = (function(){
+    const _defenses = [detectionAlarm, detectionAlarm,
+        detectionAlarm, detectionAlarm, antiIC,
+        antiIC, antiSystem, antiSystem, 
+        antiPersonnel, antiPersonnel]
     const findDefenses = (function () {
         var temp = [];
-        var defCount = privates.roll(1, 6) + privates.cpuCount;
+        var defCount = roll(1, 6) + cpuCount;
     
         for (var i = 0; i < defCount; i++) {
-            var rand = privates.roll(0, 9);
-            temp.push(_defenses[rand][privates.roll(0, 5)]);
-    
+            var rand = roll(0, 9);
+            temp.push(_defenses[rand][roll(0, 5)]);
         }
         return temp;
     })
