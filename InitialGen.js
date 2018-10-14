@@ -4,11 +4,12 @@
 //Used for cell id assignment
 var alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
 
+//imports all file paths in one spot
+const { files } = require('./modules/files.js')
 
-function roll(min, max) { //Tested
-    var rand = Math.floor(Math.random() * (max - min + 1) + min);
-    return rand;
-}
+//imports the roll function from the diceRoll module
+//@params (min, max)
+const { roll } = require(files.diceRoll())
 
 //Also need to increase the INT of the system by 3 for each CPU
 //Gain 4 spaces of memory for each CPU, one Code Gate, and one Terminal
@@ -113,13 +114,13 @@ function createTable() {
     html += '<table class="data">';
 
     // Step through the rows of the data.
-    for (var x = 0; x < 16; x++) {
+    for (var x = 0; x < 15; x++) {
         //var rowData = data[row];
         html += '<tr>'
 
         // Step through the columns in
         // this row.
-        for (var i = 0; i < 16; i++) {
+        for (var i = 0; i < 15; i++) {
             html += '<td class="cell" id="' + alpha[x] + i + '">';
             //here is where we will add the code to import the Cyberdeck Programs
             if (i < defenses.length && done == false) {
